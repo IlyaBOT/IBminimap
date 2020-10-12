@@ -1,13 +1,13 @@
-# IB PixelPlanet Minimap
+# IB PixelPlanet Minimap [RUS]
 #### Discord 
 > http://discord.me/
 #### Youtube 
 > https://www.youtube.com/channel/
 #### ВКонтакте
 > https://www.vk.com/ilyabot2
-#### Credits:
-#### IlyaBOT
-#### Endless Night
+### Карту переделали:
+#### IlyaBOT и Endless Night
+
 ### Установка
 #### Этап 1: Установите в ваш браузер расширение Tampermonkey или если вы используете Firefox, то установите Greasemonkey.
 * ![](https://raw.githubusercontent.com/reek/anti-adblock-killer/gh-pages/images/chrome.png) [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
