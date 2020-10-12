@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         IB Minimap
+// @name         Vascopixel Minimap
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  IB PixelPlanet Minimap
-// @author       IlyaBOT
-// @match        https://pixelplanet.fun/*
-// @match        http://pixelplanet.fun/*
-// @homepage     https://github.com/IlyaBOT/IBminimap
-// @updateURL    https://raw.githubusercontent.com/IlyaBOT/IBminimap/main/minimap.user.js
-// @downloadURL  https://raw.githubusercontent.com/IlyaBOT/IBminimap/main/minimap.user.js
+// @version      1.2.4
+// @description  VP Minimap Zone
+// @author       ConsoleBey#9737
+// @match        https://pixelzone.io/*
+// @match        http://pixelzone.io/*
+// @homepage     https://github.com/Vasco-Pixel/mz
+// @updateURL    https://raw.githubusercontent.com/Vasco-Pixel/mz/master/minimap.user.js
+// @downloadURL  https://raw.githubusercontent.com/Vasco-Pixel/mz/master/minimap.user.js
 // @grant        none
 // ==/UserScript==
 
@@ -18,7 +18,7 @@ Number.prototype.between = function(a, b) {
   return this > min && this < max;
 };
 var range = 25;
-window.baseTepmlateUrl = 'https://raw.githubusercontent.com/IlyaBOT/IBminimap/master';
+window.baseTepmlateUrl = 'https://raw.githubusercontent.com/IlyaBOT/IBminimap/main/';
 
 window.addEventListener('load', function () {
     //Regular Expression to get coordinates out of URL
@@ -124,7 +124,7 @@ window.addEventListener('load', function () {
     }, false);
     document.getElementById("zoom-minus").addEventListener('mouseup', function (e) {
         zooming_out = false;
-    }, false); 
+    }, false);
     	addEventListener('mouseup', function (evt) {
         if (!toggle_show)
             return;
@@ -138,8 +138,8 @@ window.addEventListener('load', function () {
         coorDOM = document.querySelector('.coorbox');
         coordsXY = coorDOM.innerHTML.match(/\d+/g)
         //console.log(coordsXY);
-        x_new = (coordsXY[0].substring(2) + coordsXY[1])*1
-        y_new = (coordsXY[2].substring(3) + coordsXY[3])*1;
+        x_new = coordsXY[0]*1
+        y_new = coordsXY[1]*1;
         //console.log({x_new,y_new});
         if (x != x_new || y != y_new) {
             x = parseInt(x_new);
