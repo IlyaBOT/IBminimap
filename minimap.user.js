@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IB Minimap
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  IB PixelPlanet Minimap
 // @author       IlyaBOT
 // @match        https://pixelplanet.fun/*
@@ -61,7 +61,7 @@ window.addEventListener('load', function () {
         '<canvas id="minimap-board" style="width: 100%; height: 100%;z-index:2;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-cursor" style="width: 100%; height: 100%;z-index:3;position:absolute;top:0;left:0;"></canvas>' +
         '</div><div id="minimap-config" style="line-height:20px;">' +
-        '<span id="hide-map" style="cursor:pointer;"> Minimizar' +
+        '<span id="hide-map" style="cursor:pointer;"> Свернуть' +
         '</span> | <span id="follow-mouse" style="cursor:pointer;"Seguir o mouse' +
         '</span> | Zoom: <span id="zoom-plus" style="cursor:pointer;font-weight:bold;">+</span>  /  ' +
         '<span id="zoom-minus" style="cursor:pointer;font-weight:bold;">-</span>' +
@@ -96,7 +96,7 @@ window.addEventListener('load', function () {
         document.getElementById("minimap-box").style.display = "none";
         document.getElementById("minimap-config").style.display = "none";
         document.getElementById("minimap-text").style.display = "block";
-        document.getElementById("minimap-text").innerHTML = "Mostrar Minimapa";
+        document.getElementById("minimap-text").innerHTML = "Развернуть миникарту";
         document.getElementById("minimap-text").style.cursor = "pointer";
     };
     document.getElementById("minimap-text").onclick = function () {
@@ -269,7 +269,7 @@ function loadTemplates() {
         if (zooming_in == false && zooming_out == false) {
             document.getElementById("minimap-box").style.display = "none";
             document.getElementById("minimap-text").style.display = "block";
-            document.getElementById("minimap-text").innerHTML = "Não tem nada aqui.";
+            document.getElementById("minimap-text").innerHTML = "Вы далеко от шаблона.";
         }
     } else {
         document.getElementById("minimap-box").style.display = "block";
