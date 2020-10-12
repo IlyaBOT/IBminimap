@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         Vascopixel Minimap
+// @name         IB Minimap
 // @namespace    http://tampermonkey.net/
-// @version      1.2.4
-// @description  VP Minimap Zone
-// @author       ConsoleBey#9737
-// @match        https://pixelzone.io/*
-// @match        http://pixelzone.io/*
-// @homepage     https://github.com/Vasco-Pixel/mz
-// @updateURL    https://raw.githubusercontent.com/Vasco-Pixel/mz/master/minimap.user.js
-// @downloadURL  https://raw.githubusercontent.com/Vasco-Pixel/mz/master/minimap.user.js
+// @version      0.1
+// @description  IB PixelPlanet Minimap
+// @author       IlyaBOT
+// @match        https://pixelplanet.fun/*
+// @match        http://pixelplanet.fun/*
+// @homepage     https://github.com/IlyaBOT/IBminimap
+// @updateURL    https://raw.githubusercontent.com/IlyaBOT/IBminimap/main/minimap.user.js
+// @downloadURL  https://raw.githubusercontent.com/IlyaBOT/IBminimap/main/minimap.user.js
 // @grant        none
 // ==/UserScript==
 
