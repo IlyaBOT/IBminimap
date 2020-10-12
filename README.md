@@ -17,8 +17,10 @@
 * ![](https://raw.githubusercontent.com/reek/anti-adblock-killer/gh-pages/images/firefox.png) [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/)
 
 #### Этап 2: Установите скрипт
-<a href="https://raw.githubusercontent.com/Vasco-Pixel/mz/master/minimap.user.js">download</a>
+<a href="https://raw.githubusercontent.com/Vasco-Pixel/mz/master/minimap.user.js">Установить скрипт</a>
 
-#### PASSO 3: Tudo pronto, agora basta usar o minimapa , ele fica abaixo a direita, caso queira desligar o minimapa ou usar mapa de outra facção clique com botão esquerdo sobre o icone e escolha sua opção
+#### Этап 3: Миникарта готова к работе, найти её вы можете на панели расширений в меню Tampermonkey (Или Greasemoney в Firefox)
 
 [![](https://github.com/Vasco-Pixel/mz/blob/master/images/vmap.png)](https://pixelzone.io/?p=1366,3286)
+
+Оригинал: https://github.com/Vasco-Pixel/mz
