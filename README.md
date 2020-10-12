@@ -17,7 +17,7 @@
 * ![](https://raw.githubusercontent.com/reek/anti-adblock-killer/gh-pages/images/firefox.png) [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/)
 
 #### Этап 2: Установите скрипт
-<a href="https://raw.githubusercontent.com/Vasco-Pixel/mz/master/minimap.user.js">Установить скрипт</a>
+<a href="https://raw.githubusercontent.com/IlyaBOT/IBminimap/main/minimap.user.js">Установить скрипт</a>
 
 #### Этап 3: Миникарта готова к работе, найти её вы можете на панели расширений в меню Tampermonkey (Или Greasemoney в Firefox)
 
