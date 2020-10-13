@@ -21,7 +21,7 @@
 
 #### Этап 3: Миникарта готова к работе, найти её вы можете на панели расширений в меню Tampermonkey (Или Greasemoney в Firefox)
 
-[![](https://github.com/Vasco-Pixel/mz/blob/master/images/vmap.png)](https://pixelzone.io/?p=1366,3286)
+![](https://github.com/IlyaBOT/IBminimap/blob/main/images/image_2020-10-13_120039.png)
 
 Оригинал: https://github.com/Vasco-Pixel/mz
 
