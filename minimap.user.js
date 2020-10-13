@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IB Minimap
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  IB PixelPlanet Minimap
 // @author       IlyaBOT
 // @match        https://pixelplanet.fun/*
@@ -17,49 +17,51 @@ Number.prototype.between = function(a, b) {
     max = Math.max.apply(Math, [a, b]);
   return this > min && this < max;
 };
-var range = 25;
+var range = 45;
 window.baseTepmlateUrl = 'https://raw.githubusercontent.com/IlyaBOT/IBminimap/main/';
 
 window.addEventListener('load', function () {
-    //Regular Expression to get coordinates out of URL
+    //Регулярное выражение для получения координат из URL-адреса
     re = /(.*)\/\?p=(\-?(?:\d*)),(\-?(?:\d*))/g;
-    //Regular Expression to get coordinates from cursor
+    //Регулярное выражение для получения координат от курсора
     rec = /x\:(\d*) y\:(\d*)/g;
-    //DOM element of the displayed X, Y variables
+    //DOM Элемент отображаемых переменных X, Y
     coorDOM = null;
     findCoor();
-    //coordinates of the middle of the window
+    //Координаты середины окна
     x_window = 0;
     y_window = 0;
-    //coordinates of cursor
+    //Координаты курсора
     x = 0;
     y = 0;
-    //list of all available templates
+    //Список всех доступных шаблонов
     template_list = null;
     zoomlevel = 2;
-    //toggle options
+    //Изменяющиеся параметры
     toggle_show = true;
-    toggle_follow = true; //if minimap is following window, x_window = x and y_window = y;
+    toggle_follow = true; //Если миникарта следует за окном, x_window = x и y_window = y;
     zooming_in = false;
     zooming_out = false;
     zoom_time = 100;
-    //array with all loaded template-images
+    //Массив со всеми загруженными изображениями-шаблонами
     image_list = [];
     counter = 0;
-    //templates which are needed in the current area
+    //Шаблоны, которые нужны в текущей области
     needed_templates = null;
-    //Cachebreaker to force refresh
+    //Cachebreaker для принудительного обновления
     cachebreaker = null;
 
     var div = document.createElement('div');
     div.setAttribute('class', 'post block bc2');
-    div.innerHTML = '<div id="minimapbg" style="position: absolute; right: 5em; bottom: 56%;">' +
+    div.innerHTML = '<div id="minimapsettings" style="postion: absolute; right: 15em; bottom: 56%;"></div>' +
+        '<div id="minimapbg" style="position: absolute; right: 5em; bottom: 56%;">' +
         '<div class="posy" id="posyt" style="background-color: rgba(0, 0, 0, 0.75); color: rgb(250, 250, 250); text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 21px; padding: 6px;">' +
         '<div id="minimap-text" style="display: none;"></div>' +
         '<div id="minimap-box" style="position: relative;width:320px;height:250px">' +
         '<canvas id="minimap" style="width: 100%; height: 100%;z-index:1;position:absolute;top:0;left:0;"></canvas>' +
-        '<canvas id="minimap-board" style="width: 100%; height: 100%;z-index:2;position:absolute;top:0;left:0;"></canvas>' +
-        '<canvas id="minimap-cursor" style="width: 100%; height: 100%;z-index:3;position:absolute;top:0;left:0;"></canvas>' +
+        //'<canvas id="minimapsettings" style=width: 100%; height: 100%; z-index:2; position:absolute;top:0;left:0;"</canvas>' +
+        '<canvas id="minimap-board" style="width: 100%; height: 100%;z-index:3;position:absolute;top:0;left:0;"></canvas>' +
+        '<canvas id="minimap-cursor" style="width: 100%; height: 100%;z-index:4;position:absolute;top:0;left:0;"></canvas>' +
         '</div><div id="minimap-config" style="line-height:20px;">' +
         '<span id="hide-map" style="cursor:pointer;"> Свернуть' +
         '</span> | <span id="follow-mouse" style="cursor:pointer;"Следование за мышью' +
@@ -71,17 +73,21 @@ window.addEventListener('load', function () {
     minimap = document.getElementById("minimap");
     minimap_board = document.getElementById("minimap-board");
     minimap_cursor = document.getElementById("minimap-cursor");
+    //minimap_settings = document.getElementById("minimapsettings");
     minimap.width = minimap.offsetWidth;
     minimap_board.width = minimap_board.offsetWidth;
     minimap_cursor.width = minimap_cursor.offsetWidth;
     minimap.height = minimap.offsetHeight;
     minimap_board.height = minimap_board.offsetHeight;
     minimap_cursor.height = minimap_cursor.offsetHeight;
+    //minimap_settings.width = minimap_settings.offsetWidth;
+    //minimap_settings.height = minimap_settings.offsetHeight;
     ctx_minimap = minimap.getContext("2d");
     ctx_minimap_board = minimap_board.getContext("2d");
     ctx_minimap_cursor = minimap_cursor.getContext("2d");
-
-    //No Antialiasing when scaling!
+    //ctx_minimap_sett = minimap_settings.getContext("2d"); // Я не знаю почему эта херня не работает...
+                                                            // Она должна работать, но она не делает этого...
+    //Никакого сглаживания при масштабировании!
     ctx_minimap.mozImageSmoothingEnabled = false;
     ctx_minimap.webkitImageSmoothingEnabled = false;
     ctx_minimap.msImageSmoothingEnabled = false;
@@ -125,14 +131,14 @@ window.addEventListener('load', function () {
     document.getElementById("zoom-minus").addEventListener('mouseup', function (e) {
         zooming_out = false;
     }, false);
-    	addEventListener('mouseup', function (evt) {
+        addEventListener('mouseup', function (evt) {
         if (!toggle_show)
             return;
         if (!toggle_follow)
             setTimeout(getCenter, 100);
     }, false);
 
-    	addEventListener('mousemove', function (evt) {
+        addEventListener('mousemove', function (evt) {
         if (!toggle_show)
             return;
         coorDOM = document.querySelector('.coorbox');
@@ -161,7 +167,7 @@ window.addEventListener('load', function () {
 function updateloop() {
 
     console.log("Updating Template List");
-    // Get JSON of available templates
+    //Получение JSON файла с доступными шаблонами
     var xmlhttp = new XMLHttpRequest();
     var url = window.baseTepmlateUrl + "templates/data.json?" + new Date().getTime();
     xmlhttp.onreadystatechange = function () {
@@ -280,7 +286,7 @@ function loadTemplates() {
                 loadImage(needed_templates[i]);
             } else {
                 counter += 1;
-                //if last needed image loaded, start drawing
+                //Если загружено последнее необходимое изображение, начинаем рисовать.
                 if (counter == needed_templates.length)
                     drawTemplates();
             }
@@ -297,7 +303,7 @@ function loadImage(imagename) {
         image_list[imagename].src = window.baseTepmlateUrl +"images/"+ template_list[imagename].name;
     image_list[imagename].onload = function () {
         counter += 1;
-        //if last needed image loaded, start drawing
+        //Если загружено последнее необходимое изображение, начинаем рисовать.
         if (counter == needed_templates.length)
             drawTemplates();
     }
@@ -375,9 +381,9 @@ function getCenter() {
 }
 
 function findCoor() {
-    //all elements with style attributes
+    //Все элементы с атрибутами стиля
     var elms = document.querySelectorAll("*[style]");
-    // Loop and find the element with the right style attributes
+    //Выполнение цикла и поиск элемента с правильными атрибутами стиля
     /*Array.prototype.forEach.call(elms, function (elm) {
         var style = elm.style.cssText;
         if (style == "position: absolute; left: 1em; bottom: 1em;") {
@@ -388,3 +394,14 @@ function findCoor() {
     });*/
     coorDOM = document.getElementById("coords");
 }
+
+//Мусорка:
+    
+//function settings() {
+//    ctx_minimap_settings.clearRect(0, 0, minimap_settings.width, minimap_settings.height);
+//    ctx_minimap_settings.beginPath();
+//    ctx_minimap_settings.lineWidth = 6;
+//    ctx_minimap_settings.strokeStyle = "black";
+//    ctx_minimap_settings.rect(0, 0, minimap_settings.width, minimap_settings.height);
+//    ctx_minimap_settings.stroke();
+//}
