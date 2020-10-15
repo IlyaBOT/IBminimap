@@ -2,9 +2,17 @@
 	"tstp": {
 	"name": "TSTP_Pixeled.png",
 	"x": 15000,
-    "y": 30600,
+	"y": 30600,
 	"width": 1280,
 	"height": 924
 	}
 }
-
+{
+	"anime1": {
+		"name": "Anime1.jpg",
+		"x": 7916,
+		"y": 20530,
+		"width": 100,
+		"height": 149
+	}
+}
