@@ -13,7 +13,7 @@
 	"width": 100,
 	"height": 149
 	},
-	"PortalCompanion_cube": {
+	"PortalCompanionСube": {
 	"name": "Portal_CompanionCube_small.png",
 	"x": 14756,
 	"y": 30298,
@@ -22,22 +22,22 @@
 	},
 	"TF2Dispenser": {
 	"name": "tf2dispenser.png",
-	"x": 14881,
+	"x": 14890,
 	"y": 30305,
 	"width": 23,
 	"height": 32
 	},
 	"RainbowTV": {
 	"name": "RainbowTV_small.png",
-	"x": 14800,
+	"x": 14815,
 	"y": 30300,
 	"width": 64,
 	"height": 64
 	},
 	"Win98PC": {
 	"name": "win98computer.png",
-	"x": 14920,
-	"y": 30350,
+	"x": 14980,
+	"y": 30300,
 	"width": 64,
 	"height": 40
 	}
