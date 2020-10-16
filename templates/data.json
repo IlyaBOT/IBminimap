@@ -22,7 +22,7 @@
 	},
 	"TF2Dispenser": {
 	"name": "tf2dispenser.png",
-	"x": 14890,
+	"x": 14880,
 	"y": 30305,
 	"width": 23,
 	"height": 32
@@ -36,7 +36,7 @@
 	},
 	"Win98PC": {
 	"name": "win98computer.png",
-	"x": 14980,
+	"x": 14940,
 	"y": 30300,
 	"width": 64,
 	"height": 40
