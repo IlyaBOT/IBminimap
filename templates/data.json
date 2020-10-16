@@ -7,10 +7,38 @@
 	"height": 924
 	},
 	"anime1": {
-	"name": "NSFW_Anime1.jpg",
+	"name": "NSFW_Anime1.png",
 	"x": 7916,
 	"y": 20530,
 	"width": 100,
 	"height": 149
+	},
+	"PortalCompanion_cube": {
+	"name": "Portal_CompanionCube_small.png",
+	"x": 14756,
+	"y": 30298,
+	"width": 64,
+	"height": 64
+	},
+	"TF2Dispenser": {
+	"name": "tf2dispenser.png",
+	"x": 14881,
+	"y": 30305,
+	"width": 23,
+	"height": 32
+	},
+	"RainbowTV": {
+	"name": "RainbowTV_small.png",
+	"x": 14800,
+	"y": 30300,
+	"width": 64,
+	"height": 64
+	},
+	"Win98PC": {
+	"name": "win98computer.png",
+	"x": 14920,
+	"y": 30350,
+	"width": 64,
+	"height": 40
 	}
 }
