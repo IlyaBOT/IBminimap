@@ -34,6 +34,13 @@
 	"width": 64,
 	"height": 64
 	},
+	"Deltarune_ralsei": {
+	"name": "Deltarune_ralsei.png",
+	"x": 16350,
+	"y": 30600,
+	"width": 64,
+	"height": 64
+	},
 	"Win98PC": {
 	"name": "win98computer.png",
 	"x": 14940,
