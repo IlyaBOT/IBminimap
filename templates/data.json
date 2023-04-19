@@ -41,6 +41,13 @@
 	"width": 900,
 	"height": 820
 	},
+	"Sekiro_death": {
+	"name": "DEATH.png",
+	"x": 15113,
+	"y": 30332,
+	"width": 91,
+	"height": 105
+	},
 	"Win98PC": {
 	"name": "win98computer.png",
 	"x": 14940,
