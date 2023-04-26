@@ -34,12 +34,12 @@
 	"width": 64,
 	"height": 64
 	},
-	"Deltarune_ralsei": {
-	"name": "Deltarune_ralsei.png",
+	"Senko pixelart": {
+	"name": "Senko_pixelart.png",
 	"x": 16350,
 	"y": 30600,
-	"width": 900,
-	"height": 820
+	"width": 256,
+	"height": 256
 	},
 	"Sekiro_death": {
 	"name": "DEATH.png",
